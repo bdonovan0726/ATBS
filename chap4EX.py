@@ -5,12 +5,18 @@ def collatz(number):
 	else:
 		return 3 * number + 1
 		
-print("Enter a number")
-inNumber= input('Number:')
-print('You entered:' + inNumber)
+while True:
+    try:
+        print('Enter a number')
+        inNumber = input('Number:')
+        result = int(inNumber)
+        break
+    except ValueError:
+        print('Enter a number only please')
+        continue
 
-result = int(inNumber);
 while result != 1:
     result = collatz(result)
     print(result)
+        
 print('Finished')
