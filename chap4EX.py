@@ -4,10 +4,10 @@ def collatz(number):
 		
 	else:
 		return 3 * number + 1
-		
+        
+print('Enter a number')		
 while True:
     try:
-        print('Enter a number')
         inNumber = input('Number:')
         result = int(inNumber)
         break
