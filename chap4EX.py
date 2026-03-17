@@ -17,6 +17,7 @@ while True:
 
 while result != 1:
     result = collatz(result)
-    print(result)
-        
+    print(result, sep=" ", end=" ")
+
+print()        
 print('Finished')
