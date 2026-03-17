@@ -5,4 +5,12 @@ def collatz(number):
 	else:
 		return 3 * number + 1
 		
-print(collatz(4))
+print("Enter a number")
+inNumber= input('Number:')
+print('You entered:' + inNumber)
+
+result = int(inNumber);
+while result != 1:
+    result = collatz(result)
+    print(result)
+print('Finished')
