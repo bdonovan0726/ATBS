@@ -11,22 +11,30 @@ targetStreakLength = 6
 
 for x in range(100):
     if random.randint(0,1) == 0:
-        resList[x] = 'H'
+        resList.append('H')
     else:
-        resList[x] = 'T'
+        resList.append('T')
         
 for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
     if resList[x] == lastchar:
         streakFlag = 1
         currentStreak += 1
     else:
-        if currentStreak
+        if currentStreak == targetStreakLength:#condition to end our streak counting
+            totalStreak100Set += 1
+            currentStreak = 1
+            overallStreakCount += 1
+            print(f"Added a streak of {resList[x]}")
+        else:
+            streakFlag = 0
+            currentStreak = 1
+            
         lastchar = resList[x]
         
-        
-for experiment_number in range(10000):  # Run 100,000 experiments total.
-    # Code that creates a list of 100 'heads' or 'tails' values
+print(f'I found {overallStreakCount} total streaks')
+# for experiment_number in range(10000):  # Run 100,000 experiments total.
+    # # Code that creates a list of 100 'heads' or 'tails' values
 
-    # Code that checks if there is a streak of 6 heads or tails in a row
+    # # Code that checks if there is a streak of 6 heads or tails in a row
 
-print('Chance of streak: %s%%' % (number_of_streaks / 100))
+# print('Chance of streak: %s%%' % (number_of_streaks / 100))
