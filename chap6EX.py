@@ -12,4 +12,8 @@ def printlistt(list):
         retString += 'and ' + list[len(list)-1]
         return retString
 
-print(printlistt(gearlistt))
+neededGear= printlistt(gearlistt)
+if neededGear == None:
+    print('Empty list, exiting')
+else:
+    print('To execute a SCUBA dive prooperly you need ' + neededGear)
