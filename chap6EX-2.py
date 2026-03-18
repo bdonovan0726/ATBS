@@ -8,30 +8,36 @@ currentStreak = 0
 totalStreak100Set = 0
 overallStreakCount = 0
 targetStreakLength = 6
+runCounter = 0
 
-for x in range(100):
-    if random.randint(0,1) == 0:
-        resList.append('H')
-    else:
-        resList.append('T')
-        
-for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
-    if resList[x] == lastchar:
-        streakFlag = 1
-        currentStreak += 1
-    else:
-        if currentStreak == targetStreakLength:#condition to end our streak counting
-            totalStreak100Set += 1
-            currentStreak = 1
-            overallStreakCount += 1
-            print(f"Added a streak of {resList[x]}")
+while runCounter < 100:
+    for x in range(100):
+        if random.randint(0,1) == 0:
+            resList.append('H')
         else:
-            streakFlag = 0
-            currentStreak = 1
+            resList.append('T')
             
-        lastchar = resList[x]
-        
-print(f'I found {overallStreakCount} total streaks')
+    runStreakCount = 0       
+    for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
+        if resList[x] == lastchar:
+            streakFlag = 1
+            currentStreak += 1
+        else:
+            if currentStreak == targetStreakLength:#condition to end our streak counting
+                totalStreak100Set += 1
+                currentStreak = 1
+                runStreakCount += 1
+                print(f"Added a streak of {resList[x]}")
+            else:
+                streakFlag = 0
+                currentStreak = 1
+                
+            lastchar = resList[x]
+            
+    print(f'I found {runStreakCount} total streaks in this run')
+    overallStreakCount += runStreakCount
+    runCounter += 1
+print(f'Overall streak count is {overallStreakCount}')
 # for experiment_number in range(10000):  # Run 100,000 experiments total.
     # # Code that creates a list of 100 'heads' or 'tails' values
 
