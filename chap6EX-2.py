@@ -4,7 +4,10 @@ number_of_streaks = 0
 resList = []
 streakFlag= 0
 lastchar = 'E'
-totalStreak = 0
+currentStreak = 0
+totalStreak100Set = 0
+overallStreakCount = 0
+targetStreakLength = 6
 
 for x in range(100):
     if random.randint(0,1) == 0:
@@ -15,8 +18,9 @@ for x in range(100):
 for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
     if resList[x] == lastchar:
         streakFlag = 1
-        totalStreak += 1
+        currentStreak += 1
     else:
+        if currentStreak
         lastchar = resList[x]
         
         
