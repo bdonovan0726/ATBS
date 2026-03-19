@@ -1,7 +1,7 @@
 import random
-number_of_streaks = 0
+import sys
 
-resList = []
+number_of_streaks = 0
 streakFlag= 0
 lastchar = 'E'
 currentStreak = 0
@@ -10,7 +10,8 @@ overallStreakCount = 0
 targetStreakLength = 6
 runCounter = 0
 
-while runCounter < 100:
+while runCounter < int(sys.argv[1]):
+    resList = []
     for x in range(100):
         if random.randint(0,1) == 0:
             resList.append('H')
