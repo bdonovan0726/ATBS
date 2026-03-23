@@ -1,16 +1,33 @@
 import random
 import sys
+import argparse
+
+parser =argparse.ArgumentParser(description='Example parser')
+
+parser.add_argument(
+    "-r", "--runcount",
+    required = True,
+    type= int,
+    help="Number of runs to execute"
+)
+
+parser.add_argument(
+    "-s", "--streak",
+    default = 6,
+    type = int,
+    help="Streak size"
+)
+  
+args = parser.parse_args()
 
 number_of_streaks = 0
-streakFlag= 0
 lastchar = 'E'
 currentStreak = 0
-totalStreak100Set = 0
 overallStreakCount = 0
-targetStreakLength = 6
+targetStreakLength = args.streak
 runCounter = 0
 
-while runCounter < int(sys.argv[1]):
+while runCounter < args.runcount:
     resList = []
     for x in range(100):
         if random.randint(0,1) == 0:
@@ -21,27 +38,18 @@ while runCounter < int(sys.argv[1]):
     runStreakCount = 0       
     for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
         if resList[x] == lastchar:
-            streakFlag = 1
             currentStreak += 1
         else:
             if currentStreak == targetStreakLength:#condition to end our streak counting
-                totalStreak100Set += 1
-                currentStreak = 1
                 runStreakCount += 1
                 print(f"Added a streak of {resList[x]}")
-            else:
-                streakFlag = 0
-                currentStreak = 1
-                
+
+            currentStreak = 1          
             lastchar = resList[x]
             
     print(f'I found {runStreakCount} total streaks in this run')
     overallStreakCount += runStreakCount
     runCounter += 1
+    lastchar = 'E'
+
 print(f'Overall streak count is {overallStreakCount}')
-# for experiment_number in range(10000):  # Run 100,000 experiments total.
-    # # Code that creates a list of 100 'heads' or 'tails' values
-
-    # # Code that checks if there is a streak of 6 heads or tails in a row
-
-# print('Chance of streak: %s%%' % (number_of_streaks / 100))
