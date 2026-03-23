@@ -1,8 +1,14 @@
+#this is the second exercise from chapter 6 of ATBS
+#creates lists of coinflip results, H or T
+#then looks for streaks, i.e 6 in a row of heads
+#target streak size, array length and run count can be specified at command line
+#this exercise demonstrates control flow, lists, and command line args
+
 import random
 import sys
 import argparse
 
-parser =argparse.ArgumentParser(description='Example parser')
+parser = argparse.ArgumentParser(description='Example parser')
 
 parser.add_argument(
     "-r", "--runcount",
