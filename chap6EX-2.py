@@ -17,6 +17,13 @@ parser.add_argument(
     type = int,
     help="Streak size"
 )
+
+parser.add_argument(
+    "-l", "--length",
+    default = 100,
+    type = int,
+    help="Array length size"
+)
   
 args = parser.parse_args()
 
@@ -29,27 +36,31 @@ runCounter = 0
 
 while runCounter < args.runcount:
     resList = []
-    for x in range(100):
+    runStreakCount = 0
+    
+    for x in range(args.length):
         if random.randint(0,1) == 0:
             resList.append('H')
         else:
             resList.append('T')
-            
-    runStreakCount = 0       
-    for x in range(100):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
+                  
+    for x in range(args.length):#yes I know using the hardcoded 100 is badddd, but right now i dont care lol
         if resList[x] == lastchar:
             currentStreak += 1
         else:
             if currentStreak == targetStreakLength:#condition to end our streak counting
                 runStreakCount += 1
                 print(f"Added a streak of {resList[x]}")
-
             currentStreak = 1          
             lastchar = resList[x]
             
+    if currentStreak == targetStreakLength:#handle edge case of streak ending at end of list
+        runStreakCount += 1
+        
     print(f'I found {runStreakCount} total streaks in this run')
     overallStreakCount += runStreakCount
     runCounter += 1
     lastchar = 'E'
+    currentStreak = 0
 
 print(f'Overall streak count is {overallStreakCount}')
