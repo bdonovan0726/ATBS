@@ -12,3 +12,6 @@ for i in charCount.items():#dumps the indexes and values
     
 for x in charCount.keys():
     print(x + ': ' + str(charCount[x]))
+    
+for y,z in charCount.items():
+    print('Key: ' + str(y) + '\nValue: ' + str(z) + '\n')
